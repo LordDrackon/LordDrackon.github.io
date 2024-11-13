@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mario Briceño - Portfolio</title>
+    <style>
+        :root {
+            --bg-dark: #0a0a0a;
+            --text-light: #f0f0f0;
+            --text-accent: #00ff00;
+            --terminal-bg: #1a1a1a;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Courier New', monospace;
+            background-color: var(--bg-dark);
+            color: var(--text-light);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem 1rem;
+        }
+
+        /* Header Styles */
+        .header {
+            background-color: var(--terminal-bg);
+            border: 1px solid var(--text-accent);
+            border-radius: 5px;
+            padding: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .terminal-prompt::before {
+            content: "$ ";
+            color: var(--text-accent);
+        }
+
+        .terminal-prompt {
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .blink {
+            animation: blink 1s infinite;
+        }
+
+        @keyframes blink {
+            0% { opacity: 0; }
+            50% { opacity: 1; }
+            100% { opacity: 0; }
+        }
+
+        .profile-image {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            border: 2px solid var(--text-accent);
+            margin-right: 1rem;
+            float: left;
+        }
+
+        /* Skills Section */
+        .skills {
+            background-color: var(--terminal-bg);
+            border: 1px solid var(--text-accent);
+            border-radius: 5px;
+            padding: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+
+        .skill-badge {
+            padding: 0.5rem;
+            border-radius: 3px;
+            text-align: center;
+            color: var(--bg-dark);
+            font-size: 0.875rem;
+            font-weight: bold;
+            transition: transform 0.3s;
+        }
+
+        .skill-badge:hover {
+            transform: translateY(-3px);
+        }
+
+        /* Projects Section */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .project-card {
+            background-color: var(--terminal-bg);
+            border: 1px solid var(--text-accent);
+            border-radius: 5px;
+            overflow: hidden;
+            transition: transform 0.3s;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .project-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-bottom: 1px solid var(--text-accent);
+        }
+
+        .project-content {
+            padding: 1rem;
+        }
+
+        .project-title {
+            color: var(--text-accent);
+            margin-bottom: 0.5rem;
+        }
+
+        .project-description {
+            margin-bottom: 1rem;
+        }
+
+        .project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .project-tag {
+            padding: 0.25rem 0.5rem;
+            border-radius: 3px;
+            font-size: 0.75rem;
+            color: var(--bg-dark);
+            font-weight: bold;
+        }
+
+        @media (max-width: 768px) {
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header Section -->
+        <header class="header">
+            <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/yo.jpg-or2dltw4n007DgLXT5loF1L4YjPdN4.jpeg" 
+                 alt="Mario Briceño" 
+                 class="profile-image">
+            <div class="terminal-prompt">name: Mario Briceño</div>
+            <div class="terminal-prompt">role: Programador y Auditor de Sistemas</div>
+            <div class="terminal-prompt">age: 43</div>
+            <div class="terminal-prompt">location: Venezuela</div>
+            <div class="terminal-prompt">status: Disponible para proyectos<span class="blink">_</span></div>
+        </header>
+
+        <!-- Skills Section -->
+        <section class="skills">
+            <h2 class="terminal-prompt">Habilidades Técnicas</h2>
+            <div class="skills-grid">
+                <div class="skill-badge" style="background-color: #3b82f6">C#.NET</div>
+                <div class="skill-badge" style="background-color: #6366f1">VB.NET</div>
+                <div class="skill-badge" style="background-color: #8b5cf6">ASP.NET</div>
+                <div class="skill-badge" style="background-color: #ec4899">WinForms</div>
+                <div class="skill-badge" style="background-color: #ef4444">UWP</div>
+                <div class="skill-badge" style="background-color: #f97316">WPF</div>
+                <div class="skill-badge" style="background-color: #eab308">HTML</div>
+                <div class="skill-badge" style="background-color: #22c55e">CSS</div>
+                <div class="skill-badge" style="background-color: #14b8a6">JavaScript</div>
+                <div class="skill-badge" style="background-color: #06b6d4">SQL Server</div>
+                <div class="skill-badge" style="background-color: #0ea5e9">MySQL</div>
+                <div class="skill-badge" style="background-color: #6366f1">PostgreSQL</div>
+                <div class="skill-badge" style="background-color: #8b5cf6">Oracle SQL</div>
+                <div class="skill-badge" style="background-color: #ec4899">Oracle Forms</div>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section>
+            <h2 class="terminal-prompt">Proyectos Recientes</h2>
+            <div class="projects-grid">
+                <!-- Project 1 -->
+                <div class="project-card">
+                    <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/imagen-2yyVHnZDo77TPycKN05kmGDt6kjXod.png" 
+                         alt="Sistema de Permisos RH" 
+                         class="project-image">
+                    <div class="project-content">
+                        <h3 class="project-title">Sistema de Permisos RH</h3>
+                        <p class="project-description">
+                            Sistema de gestión de permisos y solicitudes de recursos humanos desarrollado con tecnologías web modernas.
+                        </p>
+                        <div class="project-tags">
+                            <span class="project-tag" style="background-color: #6366f1">VB.NET</span>
+                            <span class="project-tag" style="background-color: #f97316">HTML</span>
+                            <span class="project-tag" style="background-color: #3b82f6">CSS</span>
+                            <span class="project-tag" style="background-color: #eab308">JavaScript</span>
+                            <span class="project-tag" style="background-color: #8b5cf6">ASPX</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 2 -->
+                <div class="project-card">
+                    <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/imagen-vLYg1LFzt0aY6c0GKGB1jhZOIkebFk.png" 
+                         alt="Proyecto Barcaza Barú" 
+                         class="project-image">
+                    <div class="project-content">
+                        <h3 class="project-title">Proyecto Barcaza Barú</h3>
+                        <p class="project-description">
+                            Aplicación de escritorio para la gestión y control de barcazas, desarrollada con tecnologías Microsoft.
+                        </p>
+                        <div class="project-tags">
+                            <span class="project-tag" style="background-color: #8b5cf6">C#.NET</span>
+                            <span class="project-tag" style="background-color: #3b82f6">UWP</span>
+                            <span class="project-tag" style="background-color: #22c55e">Windows</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</body>
+</html>
