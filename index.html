@@ -5,11 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mario Briceño - Portfolio</title>
     <style>
-        :root {
-            --bg-dark: #0a0a0a;
-            --text-light: #f0f0f0;
-            --text-accent: #00ff00;
-            --terminal-bg: #1a1a1a;
+  :root {
+            --navy: #0A192F;
+            --light-navy: #112240;
+            --lightest-navy: #233554;
+            --slate: #8892B0;
+            --light-slate: #A8B2D1;
+            --lightest-slate: #CCD6F6;
+            --white: #E6F1FF;
+            --green: #64FFDA;
         }
 
         * {
@@ -19,97 +23,189 @@
         }
 
         body {
-            font-family: 'Courier New', monospace;
-            background-color: var(--bg-dark);
-            color: var(--text-light);
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            background-color: var(--navy);
+            color: var(--slate);
             line-height: 1.6;
         }
 
         .container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 2rem 1rem;
+            padding: 0 1.5rem;
         }
 
-        /* Header Styles */
-        .header {
-            background-color: var(--terminal-bg);
-            border: 1px solid var(--text-accent);
-            border-radius: 5px;
-            padding: 1rem;
-            margin-bottom: 2rem;
+        /* Navigation */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 2rem 0;
         }
 
-        .terminal-prompt::before {
-            content: "$ ";
-            color: var(--text-accent);
+        .logo {
+            color: var(--green);
+            font-size: 1.5rem;
+            font-weight: bold;
+            text-decoration: none;
         }
 
-        .terminal-prompt {
-            display: block;
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: var(--lightest-slate);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--green);
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 65vh;
+            display: flex;
+            align-items: center;
+            padding: 1rem 0;
+        }
+
+        .hero-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        .hero-text {
+            flex: 1;
+        }
+
+        .hero-image {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .hero-image img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 50%;
+            border: 3px solid var(--green);
+            box-shadow: 0 0 20px rgba(100, 255, 218, 0.3);
+        }
+
+        .hero-greeting {
+            color: var(--green);
+            margin-bottom: 0.5rem;
+            font-size: 1.5rem;
+        }
+
+        .hero-title {
+            color: var(--lightest-slate);
+            font-size: 4rem;
+            font-weight: bold;
             margin-bottom: 0.5rem;
         }
 
-        .blink {
-            animation: blink 1s infinite;
+        .hero-subtitle {
+            color: var(--light-slate);
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
         }
 
-        @keyframes blink {
-            0% { opacity: 0; }
-            50% { opacity: 1; }
-            100% { opacity: 0; }
-        }
-
-        .profile-image {
-            width: 100px;
-            height: 100px;
-            border-radius: 50%;
-            border: 2px solid var(--text-accent);
-            margin-right: 1rem;
-            float: left;
-        }
-
-        /* Skills Section */
-        .skills {
-            background-color: var(--terminal-bg);
-            border: 1px solid var(--text-accent);
-            border-radius: 5px;
-            padding: 1rem;
+        .hero-description {
+            max-width: 540px;
             margin-bottom: 2rem;
         }
 
+        .button-group {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .button {
+            padding: 0.75rem 1.5rem;
+            border: 1px solid var(--green);
+            border-radius: 4px;
+            color: var(--green);
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+
+        .button:hover {
+            background-color: rgba(100, 255, 218, 0.1);
+        }
+
+        .button.filled {
+            background-color: var(--green);
+            color: var(--navy);
+        }
+
+        .button.filled:hover {
+            background-color: rgba(100, 255, 218, 0.9);
+        }
+
+ /* About Section */
+        .section {
+            padding: 3rem 0; 
+        }
+
+        .section-title {
+            color: var(--lightest-slate);
+            font-size: 2rem;
+            margin-bottom: 1rem; 
+        }
+
+        /* Skills Section */
         .skills-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
-            gap: 0.5rem;
-            margin-top: 1rem;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1rem; 
         }
 
-        .skill-badge {
-            padding: 0.5rem;
-            border-radius: 3px;
-            text-align: center;
-            color: var(--bg-dark);
-            font-size: 0.875rem;
-            font-weight: bold;
-            transition: transform 0.3s;
+        .skills-category {
+            background-color: var(--light-navy);
+            padding: 1rem; 
+            border-radius: 4px;
         }
 
-        .skill-badge:hover {
-            transform: translateY(-3px);
+        .skills-category h3 {
+            color: var(--lightest-slate);
+            margin-bottom: 1rem;
+        }
+
+        .skills-list {
+            list-style: none;
+        }
+
+        .skills-list li {
+            color: var(--light-slate);
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+        }
+
+        .skills-list li::before {
+            content: "▹";
+            color: var(--green);
+            margin-right: 0.5rem;
         }
 
         /* Projects Section */
         .projects-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
+            gap: 1rem; 
         }
 
         .project-card {
-            background-color: var(--terminal-bg);
-            border: 1px solid var(--text-accent);
-            border-radius: 5px;
+            background-color: var(--light-navy);
+            border-radius: 4px;
             overflow: hidden;
             transition: transform 0.3s;
         }
@@ -122,16 +218,15 @@
             width: 100%;
             height: 200px;
             object-fit: cover;
-            border-bottom: 1px solid var(--text-accent);
         }
 
         .project-content {
-            padding: 1rem;
+            padding: 1.25rem; 
         }
 
         .project-title {
-            color: var(--text-accent);
-            margin-bottom: 0.5rem;
+            color: var(--lightest-slate);
+            margin-bottom: 1rem;
         }
 
         .project-description {
@@ -145,99 +240,301 @@
         }
 
         .project-tag {
-            padding: 0.25rem 0.5rem;
-            border-radius: 3px;
-            font-size: 0.75rem;
-            color: var(--bg-dark);
-            font-weight: bold;
+            padding: 0.25rem 0.75rem;
+            background-color: var(--lightest-navy);
+            border-radius: 999px;
+            font-size: 0.875rem;
+            color: var(--green);
         }
 
         @media (max-width: 768px) {
-            .projects-grid {
-                grid-template-columns: 1fr;
+            .hero-title {
+                font-size: 3rem;
             }
+            
+            .hero-subtitle {
+                font-size: 2rem;
+            }
+        }
+
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(10, 25, 47, 0.9);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal.active {
+            display: flex;
+        }
+
+        .modal-content {
+            background-color: var(--light-navy);
+            padding: 2rem;
+            border-radius: 8px;
+            max-width: 500px;
+            width: 90%;
+            position: relative;
+            border: 1px solid var(--green);
+        }
+
+        .close-modal {
+            position: absolute;
+            right: 1rem;
+            top: 1rem;
+            color: var(--slate);
+            cursor: pointer;
+            font-size: 1.5rem;
+            transition: color 0.3s;
+        }
+
+        .close-modal:hover {
+            color: var(--green);
+        }
+
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .form-group label {
+            color: var(--lightest-slate);
+        }
+
+        .form-group input,
+        .form-group textarea {
+            padding: 0.75rem;
+            background-color: var(--navy);
+            border: 1px solid var(--lightest-navy);
+            border-radius: 4px;
+            color: var(--light-slate);
+            font-family: inherit;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--green);
+        }
+
+        .submit-button {
+            background-color: transparent;
+            border: 1px solid var(--green);
+            color: var(--green);
+            padding: 0.75rem 1.5rem;
+            border-radius: 4px;
+            cursor: pointer;
+            font-family: inherit;
+            transition: all 0.3s;
+        }
+
+        .submit-button:hover {
+            background-color: rgba(100, 255, 218, 0.1);
+        }
+
+        html {
+            scroll-behavior: smooth;
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <!-- Header Section -->
-        <header class="header">
-            <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/yo.jpg-or2dltw4n007DgLXT5loF1L4YjPdN4.jpeg" 
-                 alt="Mario Briceño" 
-                 class="profile-image">
-            <div class="terminal-prompt">name: Mario Briceño</div>
-            <div class="terminal-prompt">role: Programador y Auditor de Sistemas</div>
-            <div class="terminal-prompt">location: Panamá</div>
-            <div class="terminal-prompt">status: Disponible para proyectos<span class="blink">_</span></div>
-        </header>
+        <!-- Navigation -->
+        <nav>
+            <a href="#" class="logo">Marius Software Developer</a>
+            <div class="nav-links">
+                <a href="#sobre-mi">Sobre Mí</a>
+                <a href="#skills">Skills</a>
+                <a href="#" onclick="openModal(event)">Contacto</a>
+            </div>
+        </nav>
+
+        <!-- Hero Section -->
+        <section id="sobre-mi" class="hero">
+            <!-- Hero content remains unchanged -->
+            <div class="hero-content">
+                <div class="hero-text">
+                    <p class="hero-greeting">Hola, mi nombre es</p>
+                    <h1 class="hero-title">Mario Briceño.</h1>
+                    <h2 class="hero-subtitle">Desarrollo soluciones empresariales.</h2>
+                    <p class="hero-description">
+                        Soy un desarrollador de software y auditor de sistemas especializado en crear soluciones empresariales robustas. 
+                        Mi experiencia abarca desde aplicaciones de escritorio hasta sistemas web empresariales.
+                    </p>
+                    <div class="button-group">
+                        <a href="#" onclick="openModal(event)" class="button">Contáctame</a>
+                        <a href="#proyectos" class="button filled">Ver Proyectos</a>
+                    </div>
+                </div>
+                <div class="hero-image">
+                    <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/yo.jpg-or2dltw4n007DgLXT5loF1L4YjPdN4.jpeg" alt="Mario Briceño">
+                </div>
+            </div>
+        </section>
+
         <!-- Skills Section -->
-        <section class="skills">
-            <h2 class="terminal-prompt">Habilidades Técnicas</h2>
+        <section id="skills" class="section">
+          <h2 class="section-title">Tecnologías</h2>
             <div class="skills-grid">
-                <div class="skill-badge" style="background-color: #3b82f6">C#.NET</div>
-                <div class="skill-badge" style="background-color: #6366f1">VB.NET</div>
-                <div class="skill-badge" style="background-color: #8b5cf6">ASP.NET</div>
-                <div class="skill-badge" style="background-color: #ec4899">WinForms</div>
-                <div class="skill-badge" style="background-color: #ef4444">UWP</div>
-                <div class="skill-badge" style="background-color: #f97316">WPF</div>
-                <div class="skill-badge" style="background-color: #eab308">HTML</div>
-                <div class="skill-badge" style="background-color: #22c55e">CSS</div>
-                <div class="skill-badge" style="background-color: #14b8a6">JavaScript</div>
-                <div class="skill-badge" style="background-color: #06b6d4">SQL Server</div>
-                <div class="skill-badge" style="background-color: #0ea5e9">MySQL</div>
-                <div class="skill-badge" style="background-color: #6366f1">PostgreSQL</div>
-                <div class="skill-badge" style="background-color: #8b5cf6">Oracle SQL</div>
-                <div class="skill-badge" style="background-color: #ec4899">Oracle Forms</div>
+                <div class="skills-category">
+                    <h3>Desarrollo Frontend</h3>
+                    <ul class="skills-list">
+                        <li>ASP.NET</li>
+                        <li>WinForms</li>
+                        <li>UWP</li>
+                        <li>WPF</li>
+                        <li>HTML/CSS/JavaScript</li>
+                    </ul>
+                </div>
+                <div class="skills-category">
+                    <h3>Desarrollo Backend</h3>
+                    <ul class="skills-list">
+                        <li>C#.NET</li>
+                        <li>VB.NET</li>
+                        <li>ASP.NET</li>
+                        <li>Web Services</li>
+                    </ul>
+                </div>
+                <div class="skills-category">
+                    <h3>Bases de Datos</h3>
+                    <ul class="skills-list">
+                        <li>SQL Server</li>
+                        <li>MySQL</li>
+                        <li>PostgreSQL</li>
+                        <li>Oracle SQL</li>
+                        <li>Oracle Forms</li>
+                    </ul>
+                </div>
             </div>
         </section>
 
         <!-- Projects Section -->
-        <section>
-            <h2 class="terminal-prompt">Proyectos Recientes</h2>
+        <section id="proyectos" class="section">
+            <h2 class="section-title">Proyectos Recientes</h2>
+            <h2 class="section-title">Proyectos Recientes</h2>
             <div class="projects-grid">
                 <!-- Project 1 -->
                 <div class="project-card">
-                    <a href="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/imagen-2yyVHnZDo77TPycKN05kmGDt6kjXod.png" target="_blank">
-                        <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/imagen-2yyVHnZDo77TPycKN05kmGDt6kjXod.png"
-                             alt="Sistema de Permisos RH"
-                             class="project-image">
-                    </a>
+                    <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/imagen-2yyVHnZDo77TPycKN05kmGDt6kjXod.png" 
+                         alt="Sistema de Permisos RH" 
+                         class="project-image">
                     <div class="project-content">
                         <h3 class="project-title">Sistema de Permisos RH</h3>
                         <p class="project-description">
                             Sistema de gestión de permisos y solicitudes de recursos humanos desarrollado con tecnologías web modernas.
                         </p>
                         <div class="project-tags">
-                            <span class="project-tag" style="background-color: #6366f1">VB.NET</span>
-                            <span class="project-tag" style="background-color: #f97316">HTML</span>
-                            <span class="project-tag" style="background-color: #3b82f6">CSS</span>
-                            <span class="project-tag" style="background-color: #eab308">JavaScript</span>
-                            <span class="project-tag" style="background-color: #8b5cf6">ASPX</span>
+                            <span class="project-tag">VB.NET</span>
+                            <span class="project-tag">HTML</span>
+                            <span class="project-tag">CSS</span>
+                            <span class="project-tag">JavaScript</span>
+                            <span class="project-tag">ASPX</span>
                         </div>
                     </div>
                 </div>
+
                 <!-- Project 2 -->
                 <div class="project-card">
-                    <a href="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/imagen-vLYg1LFzt0aY6c0GKGB1jhZOIkebFk.png" target="_blank">
-                        <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/imagen-vLYg1LFzt0aY6c0GKGB1jhZOIkebFk.png"
-                             alt="Proyecto Barcaza Barú"
-                             class="project-image">
-                    </a>
+                    <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/imagen-vLYg1LFzt0aY6c0GKGB1jhZOIkebFk.png" 
+                         alt="Proyecto Barcaza Barú" 
+                         class="project-image">
                     <div class="project-content">
                         <h3 class="project-title">Proyecto Barcaza Barú</h3>
                         <p class="project-description">
                             Aplicación de escritorio para la gestión y control de barcazas, desarrollada con tecnologías Microsoft.
                         </p>
                         <div class="project-tags">
-                            <span class="project-tag" style="background-color: #8b5cf6">C#.NET</span>
-                            <span class="project-tag" style="background-color: #3b82f6">UWP</span>
-                            <span class="project-tag" style="background-color: #22c55e">Windows</span>
+                            <span class="project-tag">C#.NET</span>
+                            <span class="project-tag">UWP</span>
+                            <span class="project-tag">Windows</span>
                         </div>
                     </div>
                 </div>
             </div>
+
         </section>
     </div>
+
+    <!-- Modal -->
+    <div id="contactModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeModal()">&times;</span>
+            <h2 class="section-title">Contacto</h2>
+            <form class="contact-form" onsubmit="handleSubmit(event)">
+                <div class="form-group">
+                    <label for="name">Nombre</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="message">Mensaje</label>
+                    <textarea id="message" name="message" rows="4" required></textarea>
+                </div>
+                <button type="submit" class="submit-button">Enviar Mensaje</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // Modal functionality
+        function openModal(event) {
+            event.preventDefault();
+            document.getElementById('contactModal').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal() {
+            document.getElementById('contactModal').classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        // Close modal when clicking outside
+        document.getElementById('contactModal').addEventListener('click', function(event) {
+            if (event.target === this) {
+                closeModal();
+            }
+        });
+
+        // Form submission
+        function handleSubmit(event) {
+            event.preventDefault();
+            const formData = new FormData(event.target);
+            const data = Object.fromEntries(formData);
+            
+            // Here you would typically send the data to a server
+            console.log('Form submitted:', data);
+            
+            // For demo purposes, just show an alert
+            alert('¡Gracias por tu mensaje! Te contactaré pronto.');
+            
+            // Close modal and reset form
+            event.target.reset();
+            closeModal();
+        }
+
+        // Close modal with Escape key
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape' && document.getElementById('contactModal').classList.contains('active')) {
+                closeModal();
+            }
+        });
+    </script>
 </body>
 </html>
