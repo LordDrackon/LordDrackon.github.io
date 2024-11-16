@@ -1,11 +1,17 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" class="dark-mode">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mario Briceño - Portfolio</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <!-- Google Icons -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <style>
-  :root {
+        :root {
             --navy: #0A192F;
             --light-navy: #112240;
             --lightest-navy: #233554;
@@ -16,17 +22,37 @@
             --green: #64FFDA;
         }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
+        .light-mode {
+            --bg-color: #F0F4F8;
+            --text-color: #1A202C;
+            --heading-color: #2D3748;
+            --card-bg: #FFFFFF;
+            --button-text: #2D3748;
+            --button-bg: #E2E8F0;
+            --button-hover: #CBD5E0;
+        }
+
+        .dark-mode {
+            --bg-color: var(--navy);
+            --text-color: var(--slate);
+            --heading-color: var(--lightest-slate);
+            --card-bg: var(--light-navy);
+            --button-text: var(--lightest-slate);
+            --button-bg: var(--lightest-navy);
+            --button-hover: var(--light-slate);
         }
 
         body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-            background-color: var(--navy);
-            color: var(--slate);
+            font-family: 'Roboto', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
             line-height: 1.6;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        h1, h2, h3 {
+            font-family: 'Playfair Display', serif;
+            color: var(--heading-color);
         }
 
         .container {
@@ -41,6 +67,7 @@
             justify-content: space-between;
             align-items: center;
             padding: 2rem 0;
+            flex-wrap: wrap;
         }
 
         .logo {
@@ -56,7 +83,7 @@
         }
 
         .nav-links a {
-            color: var(--lightest-slate);
+            color: var(--text-color);
             text-decoration: none;
             transition: color 0.3s;
         }
@@ -106,14 +133,12 @@
         }
 
         .hero-title {
-            color: var(--lightest-slate);
             font-size: 4rem;
             font-weight: bold;
             margin-bottom: 0.5rem;
         }
 
         .hero-subtitle {
-            color: var(--light-slate);
             font-size: 2.5rem;
             margin-bottom: 1.5rem;
         }
@@ -132,13 +157,14 @@
             padding: 0.75rem 1.5rem;
             border: 1px solid var(--green);
             border-radius: 4px;
-            color: var(--green);
+            color: var(--button-text);
+            background-color: var(--button-bg);
             text-decoration: none;
             transition: all 0.3s;
         }
 
         .button:hover {
-            background-color: rgba(100, 255, 218, 0.1);
+            background-color: var(--button-hover);
         }
 
         .button.filled {
@@ -147,16 +173,16 @@
         }
 
         .button.filled:hover {
-            background-color: rgba(100, 255, 218, 0.9);
+            background-color: var(--light-slate);
+            color: var(--navy);
         }
 
- /* About Section */
+        /* About Section */
         .section {
             padding: 3rem 0; 
         }
 
         .section-title {
-            color: var(--lightest-slate);
             font-size: 2rem;
             margin-bottom: 1rem; 
         }
@@ -169,31 +195,32 @@
         }
 
         .skills-category {
-            background-color: var(--light-navy);
+            background-color: var(--card-bg);
             padding: 1rem; 
             border-radius: 4px;
         }
 
         .skills-category h3 {
-            color: var(--lightest-slate);
             margin-bottom: 1rem;
         }
 
         .skills-list {
             list-style: none;
+            padding-left: 0;
         }
 
         .skills-list li {
-            color: var(--light-slate);
             margin-bottom: 0.5rem;
             display: flex;
             align-items: center;
         }
 
         .skills-list li::before {
-            content: "▹";
+            content: "arrow_right";
+            font-family: 'Material Icons';
             color: var(--green);
             margin-right: 0.5rem;
+            font-size: 1rem;
         }
 
         /* Projects Section */
@@ -204,7 +231,7 @@
         }
 
         .project-card {
-            background-color: var(--light-navy);
+            background-color: var(--card-bg);
             border-radius: 4px;
             overflow: hidden;
             transition: transform 0.3s;
@@ -218,6 +245,7 @@
             width: 100%;
             height: 200px;
             object-fit: cover;
+            cursor: pointer;
         }
 
         .project-content {
@@ -225,7 +253,6 @@
         }
 
         .project-title {
-            color: var(--lightest-slate);
             margin-bottom: 1rem;
         }
 
@@ -247,16 +274,6 @@
             color: var(--green);
         }
 
-        @media (max-width: 768px) {
-            .hero-title {
-                font-size: 3rem;
-            }
-            
-            .hero-subtitle {
-                font-size: 2rem;
-            }
-        }
-
         /* Modal Styles */
         .modal {
             display: none;
@@ -276,7 +293,7 @@
         }
 
         .modal-content {
-            background-color: var(--light-navy);
+            background-color: var(--card-bg);
             padding: 2rem;
             border-radius: 8px;
             max-width: 500px;
@@ -289,7 +306,7 @@
             position: absolute;
             right: 1rem;
             top: 1rem;
-            color: var(--slate);
+            color: var(--text-color);
             cursor: pointer;
             font-size: 1.5rem;
             transition: color 0.3s;
@@ -312,16 +329,16 @@
         }
 
         .form-group label {
-            color: var(--lightest-slate);
+            color: var(--text-color);
         }
 
         .form-group input,
         .form-group textarea {
             padding: 0.75rem;
-            background-color: var(--navy);
-            border: 1px solid var(--lightest-navy);
+            background-color: var(--bg-color);
+            border: 1px solid var(--text-color);
             border-radius: 4px;
-            color: var(--light-slate);
+            color: var(--text-color);
             font-family: inherit;
         }
 
@@ -346,8 +363,60 @@
             background-color: rgba(100, 255, 218, 0.1);
         }
 
+        /* Theme Toggle */
+        .theme-toggle {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 2rem;
+        }
+
+        .theme-toggle-button {
+            background-color: transparent;
+            border: none;
+            color: var(--text-color);
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+
+        .theme-toggle-button:hover {
+            color: var(--green);
+        }
+
         html {
             scroll-behavior: smooth;
+        }
+
+        @media (max-width: 768px) {
+            .hero-content {
+                flex-direction: column-reverse;
+            }
+
+            .hero-image {
+                margin-bottom: 2rem;
+            }
+
+            .hero-title {
+                font-size: 3rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 2rem;
+            }
+
+            .nav-links {
+                margin-top: 1rem;
+            }
+
+            .button-group {
+                flex-direction: column;
+            }
+
+            .button {
+                width: 100%;
+                text-align: center;
+            }
         }
     </style>
 </head>
@@ -359,13 +428,13 @@
             <div class="nav-links">
                 <a href="#sobre-mi">Sobre Mí</a>
                 <a href="#skills">Skills</a>
+                <a href="#proyectos">Proyectos</a>
                 <a href="#" onclick="openModal(event)">Contacto</a>
             </div>
         </nav>
 
         <!-- Hero Section -->
         <section id="sobre-mi" class="hero">
-            <!-- Hero content remains unchanged -->
             <div class="hero-content">
                 <div class="hero-text">
                     <p class="hero-greeting">Hola, mi nombre es</p>
@@ -430,7 +499,8 @@
                 <div class="project-card">
                     <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/imagen-2yyVHnZDo77TPycKN05kmGDt6kjXod.png" 
                          alt="Sistema de Permisos RH" 
-                         class="project-image">
+                         class="project-image"
+                         onclick="openImageModal(this.src, 'Sistema de Permisos RH')">
                     <div class="project-content">
                         <h3 class="project-title">Sistema de Permisos RH</h3>
                         <p class="project-description">
@@ -450,7 +520,8 @@
                 <div class="project-card">
                     <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/imagen-vLYg1LFzt0aY6c0GKGB1jhZOIkebFk.png" 
                          alt="Proyecto Barcaza Barú" 
-                         class="project-image">
+                         class="project-image"
+                         onclick="openImageModal(this.src, 'Proyecto Barcaza Barú')">
                     <div class="project-content">
                         <h3 class="project-title">Proyecto Barcaza Barú</h3>
                         <p class="project-description">
@@ -464,14 +535,20 @@
                     </div>
                 </div>
             </div>
-
         </section>
-    </div>
 
-    <!-- Modal -->
+        <!-- Theme Toggle 
+        <div class="theme-toggle">
+            <button class="theme-toggle-button" onclick="toggleTheme()">
+                <span class="material-icons">brightness_medium</span>
+            </button>
+        </div>
+    </div> e -->
+
+    <!-- Contact Modal -->
     <div id="contactModal" class="modal">
         <div class="modal-content">
-            <span class="close-modal" onclick="closeModal()">&times;</span>
+            <span class="close-modal" onclick="closeModal('contactModal')">&times;</span>
             <h2 class="section-title">Contacto</h2>
             <form class="contact-form" onsubmit="handleSubmit(event)">
                 <div class="form-group">
@@ -491,6 +568,21 @@
         </div>
     </div>
 
+    <!-- Image Modal -->
+    <div id="imageModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeModal('imageModal')">&times;</span>
+            <h2 id="imageTitle" class="section-title"></h2>
+            <img id="modalImage" src="" alt="" style="width: 100%; height: auto;">
+        </div>
+    </div>
+
+    <!-- Bootstrap JS and Popper.js -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
     <script>
         // Modal functionality
         function openModal(event) {
@@ -499,17 +591,29 @@
             document.body.style.overflow = 'hidden';
         }
 
-        function closeModal() {
-            document.getElementById('contactModal').classList.remove('active');
+        function closeModal(modalId) {
+            document.getElementById(modalId).classList.remove('active');
             document.body.style.overflow = 'auto';
         }
 
+        // Image modal functionality
+        function openImageModal(src, title) {
+            const modal = document.getElementById('imageModal');
+            const modalImage = document.getElementById('modalImage');
+            const imageTitle = document.getElementById('imageTitle');
+            
+            modalImage.src = src;
+            imageTitle.textContent = title;
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
         // Close modal when clicking outside
-        document.getElementById('contactModal').addEventListener('click', function(event) {
-            if (event.target === this) {
-                closeModal();
+        window.onclick = function(event) {
+            if (event.target.classList.contains('modal')) {
+                closeModal(event.target.id);
             }
-        });
+        }
 
         // Form submission
         function handleSubmit(event) {
@@ -525,15 +629,62 @@
             
             // Close modal and reset form
             event.target.reset();
-            closeModal();
+            closeModal('contactModal');
         }
 
         // Close modal with Escape key
         document.addEventListener('keydown', function(event) {
-            if (event.key === 'Escape' && document.getElementById('contactModal').classList.contains('active')) {
-                closeModal();
+            if (event.key === 'Escape') {
+                closeModal('contactModal');
+                closeModal('imageModal');
             }
         });
+
+        // Smooth scrolling for anchor links
+        $(document).ready(function(){
+            $('a[href^="#"]').on('click', function (e) {
+                e.preventDefault();
+
+                var target = this.hash;
+                var $target = $(target);
+
+                $('html, body').stop().animate({
+                    'scrollTop': $target.offset().top
+                }, 900, 'swing', function () {
+                    window.location.hash = target;
+                });
+            });
+        });
+
+        // Theme toggle functionality
+        function toggleTheme() {
+            const html = document.documentElement;
+            if (html.classList.contains('light-mode')) {
+                html.classList.remove('light-mode');
+                html.classList.add('dark-mode');
+                localStorage.setItem('theme', 'dark');
+            } else {
+                html.classList.remove('dark-mode');
+                html.classList.add('light-mode');
+                localStorage.setItem('theme', 'light');
+            }
+            updateThemeToggleIcon();
+        }
+
+        // Update theme toggle button icon
+        function updateThemeToggleIcon() {
+            const themeToggleButton = document.querySelector('.theme-toggle-button .material-icons');
+            if (document.documentElement.classList.contains('dark-mode')) {
+                themeToggleButton.textContent = 'light_mode';
+            } else {
+                themeToggleButton.textContent = 'dark_mode';
+            }
+        }
+
+        // Set initial theme based on user preference or default to dark
+        const savedTheme = localStorage.getItem('theme') || 'dark';
+        document.documentElement.classList.add(`${savedTheme}-mode`);
+        updateThemeToggleIcon();
     </script>
 </body>
 </html>
